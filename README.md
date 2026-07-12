@@ -5,16 +5,7 @@ message store, and a **React (Vite)** web frontend. Messages are delivered
 instantly over Socket.io and persisted, so chat history survives a page
 refresh or server restart.
 
-> **A note on scope, up front:** this was built and tested as a **web app**
-> (React), not React Native. I could not produce a signed APK or deploy the
-> backend to a live host from this environment — there's no Android SDK /
-> EAS build toolchain or outbound access to hosting providers here. Everything
-> else in the brief — Socket.io real-time messaging, both REST APIs, chat
-> history, timestamps, clean architecture, error handling, and all four bonus
-> features — is fully implemented and was tested end-to-end (see "What was
-> tested" below). The "Turning this into a submission" section at the bottom
-> spells out exactly what running `npx eas build` / `git push` / a Render
-> deploy would take on your machine.
+
 
 ## Project structure
 
