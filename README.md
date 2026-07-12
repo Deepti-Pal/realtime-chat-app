@@ -77,36 +77,6 @@ Disconnects are handled in the `disconnect` handler: the user is removed from
 the in-memory presence map, a fresh `presence:update` is broadcast, and any
 lingering "is typing" state for that user is cleared out for everyone else.
 
-## Design decisions
-
-- **SQLite via `better-sqlite3`, single `messages` table.** The brief only
-  needed persistence for one chat room, so a single table with a `room`
-  column (currently always `"general"`) is enough — the column exists so
-  multiple rooms could be added later without a schema migration. SQLite
-  needs no separate service to install/run, which keeps "clone and run" true.
-- **Socket.io is the primary send path; REST POST is a fallback.** Sending a
-  message goes through `message:send` (with an ack, so the sender knows
-  immediately whether it succeeded). The REST `POST /api/messages` endpoint
-  does the same persist-and-broadcast work and is only used by the frontend
-  if the socket happens to be disconnected when the user hits send — so a
-  flaky connection doesn't silently swallow a message.
-- **Presence and typing state live in memory on the server**, not the
-  database — they're inherently ephemeral (tied to an active socket
-  connection) and don't need to survive a restart the way messages do.
-- **Username-based session persists in `sessionStorage`, not `localStorage`.**
-  Refreshing the tab keeps you logged in (satisfying "view previous messages
-  after refresh" without re-prompting for a name), but closing the tab logs
-  you out — there's no real auth here, so treating it as a "current session"
-  concept felt more honest than pretending it's a persistent account.
-- **One global room ("general").** The brief describes a single chat surface,
-  not multi-room chat, so I didn't build room switching — it would have
-  added UI and state surface area the requirements didn't ask for.
-- **Design language:** dark presence rail on the left (where "who's here"
-  lives) against a warm paper-toned message panel on the right (where the
-  conversation itself lives) — a deliberate split between the ambient/system
-  layer and the content layer, rather than one uniform dark or light theme.
-  Timestamps render as small monospace "stamp" chips instead of muted grey
-  text, so they read as data rather than decoration.
 
 ## Assumptions made
 
