@@ -49,7 +49,7 @@ chat-app/
 
 ## Setup & running it locally
 
-Requires **Node.js 18+** and **npm**. Two terminals — one per app.
+Requires **Node.js 22** and **npm**. Two terminals — one per app.
 
 ### 1. Backend
 
@@ -170,14 +170,14 @@ lingering "is typing" state for that user is cleared out for everyone else.
 
 ## Bonus features implemented
 
-- ✅ Username-based login (dummy authentication)
-- ✅ Typing indicator ("X is typing…", debounced, cleared on disconnect)
-- ✅ Online/offline user status (live presence rail + connection indicator)
-- ✅ Messages stored in a database (SQLite via `better-sqlite3`)
-- ⬜ Message read/delivered status — not implemented (would need per-user
+-  Username-based login (dummy authentication)
+-  Typing indicator ("X is typing…", debounced, cleared on disconnect)
+-  Online/offline user status (live presence rail + connection indicator)
+-  Messages stored in a database (SQLite via `better-sqlite3`)
+-  Message read/delivered status — not implemented (would need per-user
   read receipts tracked against the message table; skipped to keep scope
   tight given the other four bonus items)
-- ⬜ Live deployment — not done from this environment (see below)
+-  Live deployment — not done from this environment (see below)
 
 ## What was tested
 
