@@ -168,7 +168,7 @@ lingering "is typing" state for that user is cleared out for everyone else.
 -  Message read/delivered status — not implemented (would need per-user
   read receipts tracked against the message table; skipped to keep scope
   tight given the other four bonus items)
--  Live deployment — not done from this environment (see below)
+
 
 ## What was tested
 
