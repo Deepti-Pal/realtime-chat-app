@@ -187,21 +187,4 @@ code was correct:
   `message:new` with a server ack — i.e. the mandatory real-time path
   actually works, not just compiles.
 
-## Turning this into a submission
 
-To go from this repo to the exact submission format requested:
-
-1. **GitHub repository:** `git init`, commit this folder, push to a new repo.
-2. **React Native / APK:** this frontend is React (web), not React Native. To
-   satisfy the "React Native preferred" + APK deliverable, the fastest path
-   is porting the components in `frontend/src` into an Expo project
-   (`npx create-expo-app`), swapping the DOM elements for `View`/`Text`/
-   `TextInput`/`FlatList`, keeping `socket.js` and `api.js` almost as-is, then
-   building with `eas build -p android`. If that's not feasible in time, the
-   brief explicitly allows a screen recording instead — record the two-tab
-   web demo described above (two users messaging each other in real time).
-3. **Deploy the backend:** push `backend/` to Render or Railway, set
-   `CLIENT_ORIGIN` to your deployed frontend's URL, and set `DB_PATH` to a
-   writable path on that host's disk (or attach a persistent volume — plain
-   SQLite files don't survive most PaaS redeploys otherwise).
-4. **README:** this file.
