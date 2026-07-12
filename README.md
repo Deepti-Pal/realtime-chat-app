@@ -5,39 +5,6 @@ message store, and a **React (Vite)** web frontend. Messages are delivered
 instantly over Socket.io and persisted, so chat history survives a page
 refresh or server restart.
 
-
-
-## Project structure
-
-```
-chat-app/
-├── backend/                 # Express + Socket.io + SQLite
-│   ├── server.js             # App entry point: HTTP server + Socket.io + middleware
-│   ├── db/
-│   │   ├── index.js          # SQLite connection + schema
-│   │   └── messagesModel.js  # Query layer (insert / fetch history)
-│   ├── routes/
-│   │   └── messages.js       # REST API: GET/POST /api/messages
-│   ├── socket/
-│   │   └── index.js          # Socket.io event handlers (join, message, typing, disconnect)
-│   └── .env.example
-└── frontend/                 # React (Vite) web client
-    ├── src/
-    │   ├── App.jsx            # Top-level state + socket lifecycle
-    │   ├── socket.js           # Socket.io client singleton
-    │   ├── api.js              # REST calls (history fetch, REST send fallback)
-    │   ├── utils/formatTime.js
-    │   └── components/
-    │       ├── LoginScreen.jsx     # Dummy username-based "login"
-    │       ├── Sidebar.jsx         # Online users / presence rail
-    │       ├── ChatWindow.jsx      # Header + message list + input, composed together
-    │       ├── MessageList.jsx     # Scrollable history with day dividers, auto-scroll
-    │       ├── MessageBubble.jsx   # Single message row
-    │       ├── TypingIndicator.jsx
-    │       └── MessageInput.jsx    # Composer, Enter-to-send, typing events
-    └── .env.example
-```
-
 ## Setup & running it locally
 
 Requires **Node.js 22** and **npm**. Two terminals — one per app.
